@@ -39,7 +39,6 @@
       }
 
       h2 {
-        /* color: var(--primary-color); */
         text-align: center;
         margin-bottom: 20px;
         font-size: 24px;
@@ -199,6 +198,7 @@
             looping = true;
             player.seekTo(startTime);
             player.playVideo();
+            updateStatus();
           });
       }
 
@@ -211,10 +211,15 @@
           }, 500);
         }
       }
+
+      function updateStatus() {
+        const statusText = `Looping from ${startTime}s to ${stopTime}s`;
+        document.getElementById("status").textContent = statusText;
+      }
     </script>
   </head>
   <body>
-    <h2>Youtube Clip Looper</h2>
+    <h2>YouTube Clip Looper</h2>
     <div class="container">
       <div class="input-group">
         <div class="url-input">
@@ -246,10 +251,10 @@
             <input type="number" id="stop" value="10" min="0.1" step="0.1" />
           </div>
         </div>
-        <button id="startBtn" class="play-btn">Play Clip</button>
+        <button id="startBtn" class="play-btn">Set Loop</button>
       </div>
 
-      <div class="status" id="status"></div>
+      <div class="status" id="status">No Loop</div>
     </div>
 
     <script src="https://www.youtube.com/iframe_api"></script>
