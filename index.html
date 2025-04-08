@@ -6,19 +6,20 @@
     <title>Loop Youtube Clip</title>
     <style>
       :root {
-        --primary-color: #4caf50;
-        --primary-hover: #388e3c;
-        --text-color: #333333;
-        --bg-color: #f9f9f9;
+        --primary-color: #ff3e41;
+        --secondary-color: #ffe71d;
+        --text-color: #000000;
+        --bg-color: #ebeff0;
         --card-bg: #ffffff;
-        --border-color: #e0e0e0;
+        --border-color: #000000;
+        --font-family: "Courier New", monospace;
       }
 
       * {
         box-sizing: border-box;
         margin: 0;
         padding: 0;
-        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        font-family: var(--font-family);
       }
 
       body {
@@ -32,24 +33,32 @@
 
       .container {
         background-color: var(--card-bg);
-        border-radius: 8px;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        border: 4px solid var(--border-color);
+        box-shadow: 8px 8px 0 #000000;
         padding: 20px;
-        margin-top: 20px;
+        margin-top: 30px;
+        position: relative;
       }
 
       h2 {
         text-align: center;
-        margin-bottom: 20px;
-        font-size: 24px;
+        margin-bottom: 30px;
+        font-size: 32px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        background-color: var(--primary-color);
+        color: white;
+        padding: 15px;
+        border: 4px solid black;
+        box-shadow: 6px 6px 0 #000000;
       }
 
       .input-group {
-        margin-bottom: 20px;
+        margin-bottom: 25px;
         display: flex;
         flex-wrap: wrap;
-        gap: 10px;
-        align-items: center;
+        gap: 15px;
+        align-items: flex-end;
       }
 
       .url-input {
@@ -59,37 +68,42 @@
 
       label {
         display: block;
-        margin-bottom: 5px;
-        font-weight: 500;
+        margin-bottom: 8px;
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: 1px;
       }
 
       input {
         width: 100%;
-        padding: 10px;
-        border: 1px solid var(--border-color);
-        border-radius: 4px;
-        font-size: 14px;
-      }
-
-      input:focus {
-        outline: none;
-        border-color: var(--primary-color);
-        box-shadow: 0 0 0 2px rgba(255, 0, 0, 0.1);
+        padding: 12px;
+        border: 3px solid var(--border-color);
+        font-size: 16px;
+        background-color: #faffc7;
+        transition: transform 0.1s;
       }
 
       button {
         background-color: var(--primary-color);
         color: white;
-        border: none;
-        border-radius: 4px;
-        padding: 10px 15px;
+        border: 3px solid var(--border-color);
+        padding: 12px 20px;
         cursor: pointer;
-        font-weight: 500;
-        transition: background-color 0.2s;
+        font-weight: bold;
+        text-transform: uppercase;
+        box-shadow: 5px 5px 0 #000000;
+        transition: transform 0.1s, box-shadow 0.1s;
+        font-size: 16px;
       }
 
       button:hover {
-        background-color: var(--primary-hover);
+        transform: translate(-2px, -2px);
+        box-shadow: 7px 7px 0 #000000;
+      }
+
+      button:active {
+        transform: translate(0, 0);
+        box-shadow: 2px 2px 0 #000000;
       }
 
       .player-container {
@@ -97,7 +111,8 @@
         padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
         height: 0;
         overflow: hidden;
-        margin-bottom: 20px;
+        margin-bottom: 25px;
+        border: 4px solid var(--border-color);
       }
 
       .player-container iframe {
@@ -112,13 +127,13 @@
       .controls {
         display: flex;
         flex-wrap: wrap;
-        gap: 15px;
-        align-items: center;
+        gap: 20px;
+        align-items: flex-end;
       }
 
       .time-controls {
         display: flex;
-        gap: 15px;
+        gap: 20px;
         flex: 1;
       }
 
@@ -128,15 +143,21 @@
       }
 
       .play-btn {
-        padding: 10px 20px;
-        font-size: 16px;
+        padding: 15px 25px;
+        font-size: 18px;
+        background-color: var(--secondary-color);
+        color: black;
       }
 
       .status {
         text-align: center;
-        margin-top: 10px;
-        font-size: 14px;
-        color: var(--primary-color);
+        margin-top: 20px;
+        padding: 10px;
+        font-size: 18px;
+        font-weight: bold;
+        background-color: #c2f0ff;
+        border: 3px solid var(--border-color);
+        box-shadow: 5px 5px 0 #000000;
       }
 
       @media (max-width: 600px) {
@@ -219,20 +240,19 @@
     </script>
   </head>
   <body>
-    <h2>YouTube Clip Looper</h2>
+    <h2>YOUTUBE CLIP LOOPER</h2>
     <div class="container">
       <div class="input-group">
         <div class="url-input">
-          <label for="videoUrl">Video URL:</label>
+          <label for="videoUrl">VIDEO URL:</label>
           <input
             type="text"
             id="videoUrl"
-            placeholder="Enter YouTube URL (e.g. https://www.youtube.com/watch?v=dQw4w9WgXcQ)"
+            placeholder="YouTube URL (e.g. https://www.youtube.com/watch?v=dQw4w9WgXcQ)"
           />
         </div>
         <div>
-          <label>&nbsp;</label>
-          <button onclick="loadVideo()">Load Video</button>
+          <button onclick="loadVideo()">LOAD VIDEO</button>
         </div>
       </div>
 
@@ -243,18 +263,18 @@
       <div class="controls">
         <div class="time-controls">
           <div class="time-input">
-            <label for="start">Start Time (seconds):</label>
-            <input type="number" id="start" value="0" min="0" step="0.1" />
+            <label for="start">START:</label>
+            <input type="number" id="start" value="0" min="0" step="1" />
           </div>
           <div class="time-input">
-            <label for="stop">Stop Time (seconds):</label>
-            <input type="number" id="stop" value="10" min="0.1" step="0.1" />
+            <label for="stop">STOP:</label>
+            <input type="number" id="stop" value="10" min="0" step="1" />
           </div>
         </div>
-        <button id="startBtn" class="play-btn">Set Loop</button>
+        <button id="startBtn" class="play-btn">SET LOOP</button>
       </div>
 
-      <div class="status" id="status">No Loop</div>
+      <div class="status" id="status">NO LOOP ACTIVE</div>
     </div>
 
     <script src="https://www.youtube.com/iframe_api"></script>
