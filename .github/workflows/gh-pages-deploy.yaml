@@ -1,6 +1,4 @@
-# Publishes page directly from the action without committing to the repo (main nor seperate branch for publishing).
-# This depends on the GitHub repo Pages configuration. Pages > Build and Deployment > Source needs to be set
-# to "Github Actions".
+# Should not need any configuration on github repo settings for pages. Validated 04-07-2024.
 name: Deploy web app to github pages
 
 on:
